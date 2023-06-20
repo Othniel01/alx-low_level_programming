@@ -6,7 +6,20 @@
  */
 void print_large_number(unsigned long num)
 {
-	/* ... your code to print the number ... */
+	unsigned long temp = num;
+	unsigned long rev_num = 0;
+
+	while (temp != 0)
+	{
+		rev_num = rev_num * 10 + temp % 10;
+		temp /= 10;
+	}
+
+	while (rev_num != 0)
+	{
+		_putchar((rev_num % 10) + '0');
+		rev_num /= 10;
+	}
 }
 
 /**
@@ -15,17 +28,31 @@ void print_large_number(unsigned long num)
 void print_fibonacci(void)
 {
 	unsigned long fib1 = 1, fib2 = 2, fib3;
-	int i;
 
 	print_large_number(fib1);
+	_putchar(',');
+	_putchar(' ');
 	print_large_number(fib2);
 
-	for (i = 2; i < 98; i++)
+	for (int i = 2; i < 98; i++)
 	{
 		fib3 = fib1 + fib2;
+
+		_putchar(',');
+		_putchar(' ');
 		print_large_number(fib3);
 
 		fib1 = fib2;
 		fib2 = fib3;
 	}
+
+	_putchar('\n');
 }
+
+int main(void)
+{
+	print_fibonacci();
+
+	return (0);
+}
+
