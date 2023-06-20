@@ -28,13 +28,14 @@ void print_large_number(unsigned long num)
 void print_fibonacci(void)
 {
 	unsigned long fib1 = 1, fib2 = 2, fib3;
+	int i;
 
 	print_large_number(fib1);
 	_putchar(',');
 	_putchar(' ');
 	print_large_number(fib2);
 
-	for (int i = 2; i < 98; i++)
+	for (i = 2; i < 98; i++)
 	{
 		fib3 = fib1 + fib2;
 
