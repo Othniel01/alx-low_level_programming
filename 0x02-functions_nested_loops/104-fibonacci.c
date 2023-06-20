@@ -7,22 +7,24 @@
  * print_large_number - Prints a large number
  * @num: The number to print
  */
-void print_large_number(unsigned int *num)
+void print_large_number(unsigned long num)
 {
-	int i;
-	int start_printing = 0;
+	unsigned long temp = num;
+	unsigned int digits[MAX_DIGITS];
+	int i = 0;
 
-	for (i = MAX_DIGITS - 1; i >= 0; i--)
+	while (temp != 0)
 	{
-		if (start_printing || num[i] != 0)
-		{
-			_putchar(num[i] + '0');
-			start_printing = 1;
-		}
+		digits[i] = temp % 10;
+		temp /= 10;
+		i++;
 	}
 
-	if (!start_printing)
+	if (num == 0)
 		_putchar('0');
+
+	for (int j = i - 1; j >= 0; j--)
+		_putchar(digits[j] + '0');
 }
 
 /**
@@ -31,14 +33,13 @@ void print_large_number(unsigned int *num)
  * @num2: The second number to add
  * @result: The result of the addition
  */
-void add_numbers(unsigned int *num1, unsigned int *num2, unsigned int *result)
+void add_numbers(unsigned long *num1, unsigned long *num2, unsigned long *result)
 {
-	int carry = 0;
-	int i;
+	unsigned long carry = 0;
 
-	for (i = 0; i < MAX_DIGITS; i++)
+	for (int i = 0; i < MAX_DIGITS; i++)
 	{
-		int sum = num1[i] + num2[i] + carry;
+		unsigned long sum = num1[i] + num2[i] + carry;
 		result[i] = sum % 10;
 		carry = sum / 10;
 	}
@@ -49,26 +50,25 @@ void add_numbers(unsigned int *num1, unsigned int *num2, unsigned int *result)
  */
 void print_fibonacci(void)
 {
-	unsigned int fib1[MAX_DIGITS] = {0};
-	unsigned int fib2[MAX_DIGITS] = {0};
-	unsigned int fib3[MAX_DIGITS] = {0};
-	int i;
+	unsigned long fib1[MAX_DIGITS] = {0};
+	unsigned long fib2[MAX_DIGITS] = {0};
+	unsigned long fib3[MAX_DIGITS] = {0};
 
 	fib1[MAX_DIGITS - 1] = 1;
 	fib2[MAX_DIGITS - 1] = 2;
 
-	print_large_number(fib1);
+	print_large_number(fib1[MAX_DIGITS - 1]);
 	_putchar(',');
 	_putchar(' ');
-	print_large_number(fib2);
+	print_large_number(fib2[MAX_DIGITS - 1]);
 
-	for (i = 2; i < 98; i++)
+	for (int i = 2; i < 98; i++)
 	{
 		add_numbers(fib1, fib2, fib3);
 
 		_putchar(',');
 		_putchar(' ');
-		print_large_number(fib3);
+		print_large_number(fib3[MAX_DIGITS - 1]);
 
 		memcpy(fib1, fib2, sizeof(fib1));
 		memcpy(fib2, fib3, sizeof(fib2));
