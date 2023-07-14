@@ -3,7 +3,7 @@
 
 /**
  * _calloc - Allocates memory for an array of nmemb elements of size bytes each
- *           and initializes the memory to zero.
+ *          and initializes the memory to zero.
  * @nmemb: Number of elements in the array
  * @size: Size of each element in bytes
  *
@@ -17,11 +17,11 @@ void *_calloc(unsigned int nmemb, unsigned int size)
     char *char_ptr;
 
     if (nmemb == 0 || size == 0)
-        return NULL;
+        return (NULL);
 
     ptr = malloc(nmemb * size);
     if (ptr == NULL)
-        return NULL;
+        return (NULL);
 
     char_ptr = ptr;
     for (i = 0; i < (nmemb * size); i++)
