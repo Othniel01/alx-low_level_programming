@@ -1,8 +1,23 @@
 #include "main.h"
 #include <stdlib.h>
 
+/**
+ * _strlen - Calculates the length of a string
+ * @str: The string to calculate the length of
+ *
+ * Return: The length of the string
+ */
 unsigned int _strlen(char *str);
 
+/**
+ * string_nconcat - Concatenates two strings
+ * @s1: The first string
+ * @s2: The second string
+ * @n: The number of bytes of s2 to concatenate
+ *
+ * Return: A pointer to the newly allocated concatenated string
+ *         or NULL if malloc fails
+ */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	unsigned int len1, len2, i, j;
@@ -43,3 +58,4 @@ unsigned int _strlen(char *str)
 
 	return (len);
 }
+
