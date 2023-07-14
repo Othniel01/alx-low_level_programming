@@ -49,6 +49,13 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	return (concat);
 }
 
+/**
+ * _strlen - Calculates the length of a string
+ * @str: The string to calculate the length of
+ *
+ * Return: The length of the string
+ */
+
 unsigned int _strlen(char *str)
 {
 	unsigned int len = 0;
