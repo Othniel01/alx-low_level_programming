@@ -12,6 +12,11 @@
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
+
+/**
+ * _calloc - Allocates memory for an array of nmemb elements of size bytes each
+ *          and initializes the memory to zero.	
+*/
         void *ptr;
         unsigned int i;
         char *char_ptr;
