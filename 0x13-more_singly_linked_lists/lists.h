@@ -1,21 +1,19 @@
 #ifndef LISTS_H
 #define LISTS_H
 
-#include <stdio.h>
-#include <stdlib.h>
-
+#include <stddef.h>
 /**
- * struct Node - singly linked list
- * @value: integer
+ * struct listint_s - singly linked list
+ * @n: integer
  * @next: points to the next node
  *
- * Description: This structure represents a singly linked list node.
- * 
+ * Description: singly linked list node structure
+ *
  */
-typedef struct Node
+typedef struct listint_s
 {
-    int value;
-    struct Node *next;
+	int n;
+	struct listint_s *next;
 } listint_t;
 
 size_t print_listint(const listint_t *h);
@@ -33,5 +31,6 @@ listint_t *reverse_listint(listint_t **head);
 size_t print_listint_safe(const listint_t *head);
 size_t free_listint_safe(listint_t **h);
 listint_t *find_listint_loop(listint_t *head);
+int _putchar(char c);
 
-#endif
+#endif /*LISTS_H*/
