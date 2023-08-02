@@ -3,38 +3,38 @@
 #include <stdio.h>
 
 /**
- * _realloc_list - This reallocates the memory for an array of pointers
- * to the nodes at a linked list.
+ * _realloc_list - Reallocates memory for an array of pointers
+ * to the nodes in a linked list.
  *
- * @list: The old list is to append.
- * @size: This is the size of the new list (always one more than the old list).
- * @new: This is a new node to add to the list.
+ * @list: The old list to append.
+ * @size: Size of the new list (always one more than the old list).
+ * @new: New node to add to the list.
  *
- * This should return
+ * Return: Pointer to the new list.
  */
 const listint_t **_realloc_list(const listint_t **list, size_t size, const listint_t *new)
 {
-	const listint_t **newlist;
-	size_t i;
+    const listint_t **newlist;
+    size_t i;
 
-	newlist = malloc(size * sizeof(listint_t *));
-	if (newlist == NULL)
-	{
-		free(list);
-		exit(98);
-	}
+    newlist = malloc(size * sizeof(listint_t *));
+    if (newlist == NULL)
+    {
+        free(list);
+        exit(98);
+    }
 
-	for (i = 0; i < size - 1; i++)
-		newlist[i] = list[i];
+    for (i = 0; i < size - 1; i++)
+        newlist[i] = list[i];
 
-	newlist[i] = new;
-	free(list);
+    newlist[i] = new;
+    free(list);
 
-	return (newlist);
+    return (newlist);
 }
 
 /**
- * print_listint_safe - Prints a listint_t linked list.
+ * print_listint_safe - Prints a listint_t linked list safely.
  *
  * @head: Pointer to the start of the list.
  *
@@ -42,27 +42,27 @@ const listint_t **_realloc_list(const listint_t **list, size_t size, const listi
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t i, num = 0;
-	const listint_t **list = NULL;
+    size_t i, num = 0;
+    const listint_t **list = NULL;
 
-	while (head != NULL)
-	{
-		for (i = 0; i < num; i++)
-		{
-			if (head == list[i])
-			{
-				printf("-> [%p] %d\n", (void *)head, head->n);
-				free(list);
-				return (num);
-			}
-		}
+    while (head != NULL)
+    {
+        for (i = 0; i < num; i++)
+        {
+            if (head == list[i])
+            {
+                printf("-> [%p] %d\n", (void *)head, head->n);
+                free(list);
+                return (num);
+            }
+        }
 
-		num++;
-		list = _realloc_list(list, num, head);
-		printf("[%p] %d\n", (void *)head, head->n);
-		head = head->next;
-	}
+        num++;
+        list = _realloc_list(list, num, head);
+        printf("[%p] %d\n", (void *)head, head->n);
+        head = head->next;
+    }
 
-	free(list);
-	return (num);
+    free(list);
+    return (num);
 }
